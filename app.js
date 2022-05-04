@@ -1,5 +1,6 @@
 // Usando objeto express
 const express = require('express');
+const res = require('express/lib/response');
 
 // App de express
 const app = express();
@@ -16,6 +17,13 @@ app.get('/v1/explorers', (req, res) => {
 	const explorer4 = { id: 4, name: 'Explorer4' };
 	const explorers = [explorer1, explorer2, explorer3, explorer4];
 	res.status(200).json(explorers);
+});
+
+app.get('/v1/explorers/:id', (req, res) => {
+	console.log(`API explorers GET request ${new Date()}`);
+	console.log(`Getting explorer with id ${req.params.id}`);
+	const explorer = { id: 1, name: 'Explorer' };
+	res.status(200).json(explorer);
 });
 
 // Con esto inicializamos esta app
